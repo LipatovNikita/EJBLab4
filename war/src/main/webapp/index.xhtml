@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:dataTable value="#{customerBean.getAllCustomers()}" var="customer">
+    <h:column>
+        <f:facet name="header">Имя покупателя</f:facet>
+        <div align="center">
+            <h:outputText value="#{customer.firstName}"/>
+        </div>
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">Фамилия покупателя</f:facet>
+        <div align="center">
+            <h:outputText value="#{customer.lastName}"/>
+        </div>
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">Адрес доставки</f:facet>
+        <div align="center">
+            <h:outputText value="#{customer.address}"/>
+        </div>
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">Выкупы</f:facet>
+        <div align="center">
+            <h:form>
+                <h:commandButton action="#{itemBean.getItemsByCustomer(customer.id)}" value="Выкупы"/>
+            </h:form>
+        </div>
+    </h:column>
+</h:dataTable>
+</html>

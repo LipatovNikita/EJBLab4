@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:dataTable value="#{itemBean.items}" var="item">
+    <h:column>
+        <f:facet name="header">Наименование</f:facet>
+        <div align="center">
+            <h:outputText value="#{item.name}"/>
+        </div>
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">Цена</f:facet>
+        <div align="center">
+            <h:outputText value="#{item.price}"/>
+        </div>
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">Адрес отпраки</f:facet>
+        <div align="center">
+            <h:outputText value="#{item.warehouse_address}"/>
+        </div>
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">Статус доставки</f:facet>
+        <div align="center">
+            <h:form>
+                <h:commandButton action="#{deliveryBean.handleOrder(item.id)}" value="Просмотреть статус"/>
+            </h:form>
+        </div>
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">Оформить достаку</f:facet>
+        <div align="center">
+            <h:form>
+                <h:commandButton action="#{orderBean.sendOrderInfo(item)}" value="Доставка"/>
+            </h:form>
+        </div>
+    </h:column>
+</h:dataTable>
+</html>
